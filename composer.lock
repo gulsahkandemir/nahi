@@ -624,12 +624,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "v4.0.6"
+                "reference": "dd8d7edc6f39797227f8e341b9b49f27bc387c02"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/v4.0.6",
-                "reference": "v4.0.6",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/dd8d7edc6f39797227f8e341b9b49f27bc387c02",
+                "reference": "dd8d7edc6f39797227f8e341b9b49f27bc387c02",
                 "shasum": ""
             },
             "require": {
@@ -726,7 +726,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2013-08-02 16:46:10"
+            "time": "2013-08-05 13:26:09"
         },
         {
             "name": "monolog/monolog",
@@ -1529,12 +1529,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/HttpKernel.git",
-                "reference": "db40d3dd68f606f8ec0e73c057594b575360c846"
+                "reference": "0c537aa5c4c3e033588a3b8268a4ee35d036fb28"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/HttpKernel/zipball/db40d3dd68f606f8ec0e73c057594b575360c846",
-                "reference": "db40d3dd68f606f8ec0e73c057594b575360c846",
+                "url": "https://api.github.com/repos/symfony/HttpKernel/zipball/0c537aa5c4c3e033588a3b8268a4ee35d036fb28",
+                "reference": "0c537aa5c4c3e033588a3b8268a4ee35d036fb28",
                 "shasum": ""
             },
             "require": {
@@ -1591,7 +1591,7 @@
             ],
             "description": "Symfony HttpKernel Component",
             "homepage": "http://symfony.com",
-            "time": "2013-08-02 23:18:34"
+            "time": "2013-08-06 05:49:23"
         },
         {
             "name": "symfony/process",
