@@ -3,7 +3,7 @@
     <head>
         <title>{{$title}}</title>
 
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <meta name="viewport" content="initial-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
 
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/webfont/1.4.8/webfont.js"></script>
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.js"></script>
