@@ -11,7 +11,7 @@
         <link rel="stylesheet" type="text/css" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/smoothness/jquery-ui.css" />
         <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" />
 
-        <link rel="stylesheet" type="text/css" href="/style/site.css">
+        <link rel="stylesheet" type="text/css" href="/style/main.css">
     </head>
     <body>
         <div class="container">
