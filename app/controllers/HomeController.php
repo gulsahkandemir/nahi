@@ -7,5 +7,4 @@ class HomeController extends BaseController {
         $this->layout->with('title', 'I need a hand in...');
         $this->layout->nest('body', 'home.index');
 	}
-
 }

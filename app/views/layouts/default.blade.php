@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>{{ $title }}</title>
+        <title>{{$title}}</title>
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/webfont/1.4.8/webfont.js"></script>
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.js"></script>
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.js"></script>
@@ -13,9 +13,9 @@
 
         <link rel="stylesheet" type="text/css" href="/style/main.css">
     </head>
-    <body>
+    <body class="{{$route}}">
         <div class="container">
-            {{ $body }}
+            {{$body}}
         </div>
     </body>
 </html>
