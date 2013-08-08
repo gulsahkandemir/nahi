@@ -2,6 +2,9 @@
 <html lang="en">
     <head>
         <title>{{$title}}</title>
+
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=320, height=device-height, target-densitydpi=medium-dpi" />
+
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/webfont/1.4.8/webfont.js"></script>
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.js"></script>
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.js"></script>
