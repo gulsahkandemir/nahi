@@ -1,4 +1,29 @@
 .welcome-container {
+    .clearfix;
     margin-top: 20%;
     margin-bottom: 20%;
+    background-color: rgba(255, 255, 255, 0.75);
+    .form-inline {
+        margin-bottom: 20px;
+        .input-prepend {
+            display: flex;
+            display: -webkit-flex;
+            flex-direction: row;
+            -webkit-flex-direction: row;
+            max-width: 350px;
+            margin: auto;
+            input[type=text] {
+                flex: 1 1 auto;
+                -webkit-flex: 1 1 auto;
+            }
+        }
+    }
+}
+
+.reaching-hands {
+    position: absolute;
+    bottom: -200px;
+    z-index: -1;
+    width: 100%;
+    left: 0px;
 }
