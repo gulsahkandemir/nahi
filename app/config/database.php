@@ -54,14 +54,13 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => 'localhost',
+			'host'      => '127.0.0.1',
 			'database'  => 'nahi',
 			'username'  => 'www',
 			'password'  => '123123',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
-			'prefix'    => '',
-            'port'      => 3306
+			'prefix'    => ''
 		),
 
 		'pgsql' => array(
