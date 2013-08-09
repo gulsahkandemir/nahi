@@ -1,10 +1,11 @@
 {
-	"name": "laravel/laravel",
-	"description": "The Laravel Framework.",
-	"keywords": ["framework", "laravel"],
+	"name": "nahi",
+	"description": "I need a hand in...",
+	"keywords": ["nahi"],
 	"require": {
-		"laravel/framework": "4.0.*",
-        "twitter/bootstrap": "*"
+		"laravel/framework": "*",
+        "twitter/bootstrap": "*",
+		"barryvdh/laravel-ide-helper": "*"
 	},
 	"autoload": {
 		"classmap": [
@@ -24,6 +25,7 @@
 			"php artisan clear-compiled"
 		],
 		"post-update-cmd": [
+            "php artisan ide-helper:generate",
 			"php artisan optimize"
 		],
 		"post-create-project-cmd": [
