@@ -15,4 +15,4 @@
     </div>
 </div>
 
-<img class="reaching-hands" src="/images/reaching-hands.png" />
+<img class="reaching-hands" src="/images/reaching-hands.gif" />
