@@ -16,8 +16,8 @@ class CreateEmailsTable extends Migration {
 		{
 			$table->increments('id');
             $table->string('email')->unique();
-            $table->string('locale');
-            $table->integer('timezone_offet');
+            $table->string('locale')->default('en_US');
+            $table->integer('timezone_offset')->default(0);
 			$table->timestamps();
 		});
 	}
