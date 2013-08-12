@@ -53,12 +53,16 @@ App::error(function(Exception $exception, $code)
     Log::error($exception);
 });
 
-App::error(function(\Symfony\Component\HttpKernel\Exception\HttpExceptionInterface $exception, $code)
+use \Symfony\Component\HttpKernel\Exception\HttpException;
+App::error(function(HttpException $exception, $code)
 {
+    $textMessage = $exception->getMessage();
+    $jsonMessage = json_decode($textMessage);
     return Response::json(array(
-            'error' => true,
-            'message' => $exception->getMessage(),
-            'code' => $code),
+            "error" => array (
+                'message' => $jsonMessage ? $jsonMessage : $textMessage,
+                'code' => $code)
+            ),
         $code
     );
 });

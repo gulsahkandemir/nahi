@@ -11,8 +11,7 @@ class ApiController extends BaseController {
         try {
             return parent::getRequestParameter($key, $required);
         } catch(MissingMandatoryParametersException $e) {
-            throw new BadRequestHttpException("'{$key}' parameter is missing.");
+            throw new BadRequestHttpException($e->getMessage(), $e);
         }
     }
-
 }

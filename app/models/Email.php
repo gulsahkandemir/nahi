@@ -12,5 +12,11 @@ class Email extends Eloquent {
 	 */
 	protected $table = 'emails';
 
+    /**
+     * Fillable columns of the model.
+     *
+     * @var array
+     */
+    protected $fillable = array('email', 'timezone_offset', 'locale');
 
 }

@@ -1,5 +1,7 @@
 <?php
 
+use \Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
+
 class EmailController extends ApiController {
 
 	/**
@@ -22,23 +24,40 @@ class EmailController extends ApiController {
 		//
 	}
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function store()
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @return Email
+     * @throws BadRequestHttpException
+     */
+    public function store()
 	{
-        $mail = $this->getRequestParameter('email', true);
-        $timezoneOffset = $this->getRequestParameter('timezoneOffset', true);
+        // Prepare $data array using user input
+        $data = array(
+            'email' => Input::get('email'),
+            'timezone_offset' => Input::get('timezoneOffset'),
+            'locale' => Locale::acceptFromHttp(Request::server('HTTP_ACCEPT_LANGUAGE'))
+        );
 
-        $email = new Email();
-        $email->email = $mail;
-        $email->locale = Locale::acceptFromHttp(Request::server('HTTP_ACCEPT_LANGUAGE'));
-        $email->timezone_offset = $timezoneOffset;
+        // Set validation $rules for $data
+        $rules = array(
+            'email'     => 'required|between:3,64|email|unique:emails',
+            'timezone_offset'  =>'required|integer|between:-720,840',
+            'locale'    => 'required|min:2'
+        );
+
+        // Return 400 Bad Request if $data is not valid
+        $validator = Validator::make($data, $rules);
+        if($validator->fails()) {
+            throw new BadRequestHttpException($validator->messages());
+        }
+
+        // Else create an $email and save it.
+        $email = new Email($data);
         $email->save();
 
-        return Response::json($email->toArray());
+        // Return created $email object.
+        return $email;
 	}
 
 	/**
@@ -51,7 +70,7 @@ class EmailController extends ApiController {
 	{
 		$email = Email::find($id);
 
-        return Response::json($email);
+        return $email;
 	}
 
 	/**
