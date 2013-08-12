@@ -1,8 +1,10 @@
 <?php
 
+use \Symfony\Component\Routing\Exception\MissingMandatoryParametersException;
+
 class BaseController extends Controller {
     /** @var \Illuminate\View\View */
-    public $layout = 'layouts.default';
+    protected $layout = 'layouts.default';
 
 	/**
 	 * Setup the layout used by the controller.
@@ -24,8 +26,11 @@ class BaseController extends Controller {
 		}
 	}
 
-    public function missingMethod($parameters)
-    {
-
+    public function getRequestParameter($key, $required = false) {
+        $value = Request::get($key);
+        if($required && $value === NULL) {
+            throw new MissingMandatoryParametersException("'{$key}' parameter is missing.");
+        }
+        return $value;
     }
 }

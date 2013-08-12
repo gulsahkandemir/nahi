@@ -50,7 +50,17 @@ Log::useDailyFiles(storage_path().'/logs/'.$logFile);
 
 App::error(function(Exception $exception, $code)
 {
-	Log::error($exception);
+    Log::error($exception);
+});
+
+App::error(function(\Symfony\Component\HttpKernel\Exception\HttpExceptionInterface $exception, $code)
+{
+    return Response::json(array(
+            'error' => true,
+            'message' => $exception->getMessage(),
+            'code' => $code),
+        $code
+    );
 });
 
 /*

@@ -1,6 +1,6 @@
 <?php
 
-class EmailController extends \BaseController {
+class EmailController extends ApiController {
 
 	/**
 	 * Display a listing of the resource.
@@ -29,17 +29,16 @@ class EmailController extends \BaseController {
 	 */
 	public function store()
 	{
+        $mail = $this->getRequestParameter('email', true);
+        $timezoneOffset = $this->getRequestParameter('timezoneOffset', true);
+
         $email = new Email();
-        $email->email = Request::get('email');
+        $email->email = $mail;
         $email->locale = Locale::acceptFromHttp(Request::server('HTTP_ACCEPT_LANGUAGE'));
-        $email->timezone_offset = Request::get('timezoneOffset');
+        $email->timezone_offset = $timezoneOffset;
         $email->save();
 
-        return Response::json(array(
-            'error' => false,
-            'email' => $email->toArray(),
-            200
-        ));
+        return Response::json($email->toArray());
 	}
 
 	/**
@@ -50,7 +49,9 @@ class EmailController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		$email = Email::find($id);
+
+        return Response::json($email);
 	}
 
 	/**
