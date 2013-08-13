@@ -3,9 +3,8 @@
 	"description": "I need a hand in...",
 	"keywords": ["nahi"],
 	"require": {
-		"laravel/framework": "*",
-        "twitter/bootstrap": "*",
-		"barryvdh/laravel-ide-helper": "*"
+		"laravel/framework": "4.0.*",
+		"barryvdh/laravel-ide-helper": "1.*"
 	},
 	"autoload": {
 		"classmap": [

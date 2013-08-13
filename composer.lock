@@ -3,11 +3,11 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "e2c2ac2ef86e5239efaaf22584fdfb48",
+    "hash": "7cc886a7927e886343692ad42fce342c",
     "packages": [
         {
             "name": "barryvdh/laravel-ide-helper",
-            "version": "dev-master",
+            "version": "v1.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/barryvdh/laravel-ide-helper.git",
@@ -448,12 +448,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "dc2a5c3a58ef1a89c3746788aa392d893e74ae3c"
+                "reference": "d3c2e5e521e4cf0ebc09fb7fe0bca33d91f695ab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/dc2a5c3a58ef1a89c3746788aa392d893e74ae3c",
-                "reference": "dc2a5c3a58ef1a89c3746788aa392d893e74ae3c",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/d3c2e5e521e4cf0ebc09fb7fe0bca33d91f695ab",
+                "reference": "d3c2e5e521e4cf0ebc09fb7fe0bca33d91f695ab",
                 "shasum": ""
             },
             "require": {
@@ -510,7 +510,7 @@
                 "persistence",
                 "queryobject"
             ],
-            "time": "2013-08-09 03:32:12"
+            "time": "2013-08-10 20:04:24"
         },
         {
             "name": "doctrine/inflector",
@@ -729,16 +729,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "dev-master",
+            "version": "4.0.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "eb35679ce0fe37061d9be6f45821c924d28ba559"
+                "reference": "1d9514469248dda2b1803cfeb6c7beffa6d53e47"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/eb35679ce0fe37061d9be6f45821c924d28ba559",
-                "reference": "eb35679ce0fe37061d9be6f45821c924d28ba559",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/1d9514469248dda2b1803cfeb6c7beffa6d53e47",
+                "reference": "1d9514469248dda2b1803cfeb6c7beffa6d53e47",
                 "shasum": ""
             },
             "require": {
@@ -750,7 +750,6 @@
                 "nesbot/carbon": "1.*",
                 "patchwork/utf8": "1.1.*",
                 "php": ">=5.3.0",
-                "phpseclib/phpseclib": "0.3.x",
                 "predis/predis": "0.8.*",
                 "swiftmailer/swiftmailer": "5.0.*",
                 "symfony/browser-kit": "2.3.*",
@@ -805,7 +804,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.1-dev"
+                    "dev-master": "4.0-dev"
                 }
             },
             "autoload": {
@@ -836,7 +835,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2013-08-08 01:24:29"
+            "time": "2013-08-10 17:46:54"
         },
         {
             "name": "monolog/monolog",
@@ -1077,80 +1076,6 @@
                 }
             ],
             "time": "2013-08-07 11:04:22"
-        },
-        {
-            "name": "phpseclib/phpseclib",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/phpseclib/phpseclib.git",
-                "reference": "ffca003225a3ae4582b7268a2bde2bf25d0f081e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/ffca003225a3ae4582b7268a2bde2bf25d0f081e",
-                "reference": "ffca003225a3ae4582b7268a2bde2bf25d0f081e",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.0.0"
-            },
-            "suggest": {
-                "ext-gmp": "Install the GMP (GNU Multiple Precision) extension in order to speed up arbitrary precision integer arithmetic operations.",
-                "ext-mcrypt": "Install the Mcrypt extension in order to speed up a wide variety of cryptographic operations.",
-                "pear-pear/PHP_Compat": "Install PHP_Compat to get phpseclib working on PHP >= 4.3.3."
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.3-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Crypt": "phpseclib/",
-                    "File": "phpseclib/",
-                    "Math": "phpseclib/",
-                    "Net": "phpseclib/"
-                },
-                "files": [
-                    "phpseclib/Crypt/Random.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "include-path": [
-                "phpseclib/"
-            ],
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jim Wigginton",
-                    "email": "terrafrost@php.net",
-                    "role": "Developer"
-                }
-            ],
-            "description": "PHP Secure Communications Library - Pure-PHP implementations of RSA, AES, SSH2, SFTP, X.509 etc.",
-            "homepage": "http://phpseclib.sourceforge.net",
-            "keywords": [
-                "BigInteger",
-                "aes",
-                "asn.1",
-                "asn1",
-                "crypto",
-                "cryptography",
-                "encryption",
-                "rsa",
-                "security",
-                "sftp",
-                "signature",
-                "signing",
-                "ssh",
-                "x.509",
-                "x509"
-            ],
-            "time": "2013-08-07 14:22:52"
         },
         {
             "name": "predis/predis",
@@ -1759,12 +1684,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/HttpFoundation.git",
-                "reference": "v2.3.3"
+                "reference": "f2934b0cf525bef5143e52de93f538df4aeef09c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/HttpFoundation/zipball/v2.3.3",
-                "reference": "v2.3.3",
+                "url": "https://api.github.com/repos/symfony/HttpFoundation/zipball/f2934b0cf525bef5143e52de93f538df4aeef09c",
+                "reference": "f2934b0cf525bef5143e52de93f538df4aeef09c",
                 "shasum": ""
             },
             "require": {
@@ -1800,7 +1725,7 @@
             ],
             "description": "Symfony HttpFoundation Component",
             "homepage": "http://symfony.com",
-            "time": "2013-08-07 14:02:06"
+            "time": "2013-08-08 12:02:32"
         },
         {
             "name": "symfony/http-kernel",
@@ -1809,12 +1734,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/HttpKernel.git",
-                "reference": "0cbb96cc6b4fd44830572e4b05df31d79f5fb522"
+                "reference": "aa1d06d1de95e9132c32ff2d220156247287dd89"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/HttpKernel/zipball/0cbb96cc6b4fd44830572e4b05df31d79f5fb522",
-                "reference": "0cbb96cc6b4fd44830572e4b05df31d79f5fb522",
+                "url": "https://api.github.com/repos/symfony/HttpKernel/zipball/aa1d06d1de95e9132c32ff2d220156247287dd89",
+                "reference": "aa1d06d1de95e9132c32ff2d220156247287dd89",
                 "shasum": ""
             },
             "require": {
@@ -1871,7 +1796,7 @@
             ],
             "description": "Symfony HttpKernel Component",
             "homepage": "http://symfony.com",
-            "time": "2013-08-07 18:24:25"
+            "time": "2013-08-11 17:29:22"
         },
         {
             "name": "symfony/process",
@@ -2032,33 +1957,6 @@
             "description": "Symfony Translation Component",
             "homepage": "http://symfony.com",
             "time": "2013-08-02 20:53:38"
-        },
-        {
-            "name": "twitter/bootstrap",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/twbs/bootstrap.git",
-                "reference": "7f0b487477bc63bef488dff14a0c28ea2106286b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/7f0b487477bc63bef488dff14a0c28ea2106286b",
-                "reference": "7f0b487477bc63bef488dff14a0c28ea2106286b",
-                "shasum": ""
-            },
-            "type": "library",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "description": "Sleek, intuitive, and powerful front-end framework for faster and easier web development.",
-            "homepage": "http://twbs.github.com/bootstrap/",
-            "keywords": [
-                "bootstrap",
-                "css"
-            ],
-            "time": "2013-07-31 19:36:59"
         }
     ],
     "packages-dev": [

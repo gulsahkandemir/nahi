@@ -52,7 +52,7 @@ class EmailController extends ApiController {
             throw new BadRequestHttpException($validator->messages());
         }
 
-        // Else create an $email and save it.
+        // Create an $email and save it.
         $email = new Email($data);
         $email->save();
 

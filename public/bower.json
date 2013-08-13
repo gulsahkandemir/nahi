@@ -1,0 +1,14 @@
+{
+  "name": "nahi-js",
+  "version": "0.0.1",
+  "dependencies": {
+    "underscore": "~1.5.1",
+    "jquery": "~1.10.2",
+    "requirejs": "~2.1.8",
+    "requirejs-text": "~2.0.10",
+    "handlebars": "~1.0.0",
+    "bootstrap": "~2.3.2",
+    "jquery-ui": "~1.10.3",
+    "font-awesome": "~3.2.1"
+  }
+}

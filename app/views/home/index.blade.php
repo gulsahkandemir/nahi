@@ -1,4 +1,4 @@
-<div class="row text-center">
+<div class="nh-letmeknow row text-center">
     <div class="span8 offset2 welcome-container">
         <h3>
             &ldquo;I need a hand in&rdquo; is coming out soon!
