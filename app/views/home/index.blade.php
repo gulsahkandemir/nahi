@@ -12,7 +12,7 @@
                data-content="We're helping your friends to help you.
                 Are you moving to a new place? Do you need help to organize a big baby shower?
                 Or do you simply want one of your handy friends to help fix your sink?
-                Just ask for hand using &ldquo;Need a Hand&rdquo;.">Need a Hand &#42;</a>
+                Just ask for hand using &ldquo;Need a Hand&rdquo;.">Need a Hand&#42;</a>
             is coming out soon!
         </h3>
 
