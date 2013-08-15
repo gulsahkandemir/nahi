@@ -4,7 +4,8 @@ define([
     "underscore",
     "bootstrap",
     "jquery-ui",
-    "text"
+    "text",
+    "google.analytics"
 ], function(Handlebars, $, _) {
     return {
         Handlebars: Handlebars, $: $, _: _
