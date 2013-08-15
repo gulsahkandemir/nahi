@@ -5,7 +5,7 @@
                href="javascript:void(0)"
                data-toggle="popover"
                data-placement="top"
-               data-trigger="click"
+               data-trigger="hover"
                data-container=".nh-letmeknow"
                data-html="true"
                data-original-title="What is Need a Hand?"
