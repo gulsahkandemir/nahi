@@ -45,7 +45,7 @@ define([
         _onSuccess: function(data) {
             var alertDiv = this.templates.alertDiv({
                 type: 'success',
-                text: "Thanks! We will notify you when we go live."
+                html: "Thanks! We will notify you when we go live."
             });
             this.eles.emailTxt.val('');
             this.element.find('.js-alert-div').remove();
