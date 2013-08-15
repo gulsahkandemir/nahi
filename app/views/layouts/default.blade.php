@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>{{$title}}</title>
+        <title>{{$title}} | Need a Hand</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <link rel="stylesheet" type="text/css" href="/style/main.css">
         <script data-main="/scripts/main.js" src="/vendor/requirejs/require.js"></script>
