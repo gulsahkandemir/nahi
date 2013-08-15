@@ -52,10 +52,17 @@ define([
             this.element.append(alertDiv);
         },
         _onError: function(data) {
-            var errorMsg = data.responseJSON.error.message;
+            var message = data.responseJSON.error.message ?
+                data.responseJSON.error.message :
+                // Default error object
+                {form: 'An error occured. Please try again.'};
+
+            // Flatten error object to an html
+            var messageHtml = $.map(message, function(key, value) { return [key]; }).join('<br/>');
+
             var alertDiv = this.templates.alertDiv({
                 type: 'error',
-                text: errorMsg.email
+                html: messageHtml
             });
             this.element.find('.js-alert-div').remove();
             this.element.append(alertDiv);
