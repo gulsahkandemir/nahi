@@ -8,7 +8,7 @@
         <meta name="twitter:url" content="http://needahand.in">
         <meta name="twitter:title" content="Coming Soon! | Need a Hand">
         <meta name="twitter:domain" content="needahand.in">
-        <meta name="twitter:site:id" content="@needahandin">
+        <meta name="twitter:site" content="needahandin">
         <meta name="twitter:description" content="We're helping your friends to help you.
                 Do you need help to organize a big baby shower?
                 Or do you simply want one of your handy friends to help fix your sink?
