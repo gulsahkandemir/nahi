@@ -7,6 +7,7 @@ define([
 
         var maps = new Array();
         maps[".nh-letmeknow"] = { mid: "nh.letmeknow", fname: "nh_letmeknow" };
+        maps[".bs-popover"] = { mid: "bootstrap", fname: "popover" };
 
         for(var selector in maps) {
             var elements = $(this).find(selector);

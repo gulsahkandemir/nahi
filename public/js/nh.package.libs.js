@@ -4,7 +4,7 @@ define([
     "underscore",
     "bootstrap",
     "jquery-ui",
-    "requirejs-text"
+    "text"
 ], function(Handlebars, $, _) {
     return {
         Handlebars: Handlebars, $: $, _: _

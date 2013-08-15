@@ -15,5 +15,5 @@ Route::resource('/', 'HomeController');
 // Route group for API versioning
 Route::group(array('prefix' => 'api/v1'), function()
 {
-    Route::resource('email', 'EmailController');
+    Route::resource('emails', 'EmailController');
 });

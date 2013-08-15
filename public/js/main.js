@@ -25,7 +25,7 @@ require.config({
         jquery: '../vendor/jquery/jquery',
         'jquery-ui': '../vendor/jquery-ui/ui/jquery-ui',
         underscore: '../vendor/underscore/underscore',
-        'requirejs-text': '../vendor/requirejs-text/text'
+        text: '../vendor/requirejs-text/text'
     }
 });
 
