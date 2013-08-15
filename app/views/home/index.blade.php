@@ -1,16 +1,18 @@
 <div class="row text-center">
-    <div class="nh-letmeknow span8 offset2 welcome-container" data-osman="hebele" data-autosuggest-url="http://www.udemy.com">
+    <div class="nh-letmeknow span8 offset2" data-osman="hebele" data-autosuggest-url="http://www.udemy.com">
         <h3>
             <a class="bs-popover"
                href="javascript:void(0)"
                data-toggle="popover"
                data-placement="top"
-               data-trigger="hover"
-               data-container="body"
-               data-original-title="Lorem ipsum dolor sit amet"
-               data-content="Consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.">Need a Hand &#42;</a>
+               data-trigger="click"
+               data-container=".nh-letmeknow"
+               data-html="true"
+               data-original-title="What is Need a Hand?"
+               data-content="We're helping your friends to help you.
+                Are you moving to a new place? Do you need help to organize a big baby shower?
+                Or do you simply want one of your handy friends to help fix your sink?
+                Just ask for hand using &ldquo;Need a Hand&rdquo;.">Need a Hand &#42;</a>
             is coming out soon!
         </h3>
 
