@@ -1,5 +1,7 @@
 #!/bin/bash
 
+all: update install-rel
+
 install-dev:
 	composer update
 	cd public && bower update
@@ -15,4 +17,3 @@ update:
 	git pull
 	git submodule update --init --recursive
 
-all: update install-rel
