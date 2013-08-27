@@ -11,8 +11,8 @@ install-rel:
 	lessc public/style/main.less public/style/main.css --yui-compress
 
 update:
-    git reset --hard
-    git pull
-    git submodule update --init --recursive
+	git reset --hard
+	git pull
+	git submodule update --init --recursive
 
 all: update install-rel
