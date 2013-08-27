@@ -3,16 +3,14 @@ define([
 ], function(Libs) {
     var Handlebars = Libs.Handlebars, $ = Libs.$, _ = Libs._;
 
-    var NH = {};
-
     NH.Api = {
         version : 'v1',
-        url: '//needahand.in/',
+        url: NH.Config.baseUrl,
 
         call: function(url, params) {
             return $.ajax(
                 $.extend({
-                    url: this.url + 'api/' + this.version + "/" + url,
+                    url: this.url + '/api/' + this.version + "/" + url,
                     dataType: "json"
                 }, params));
         }

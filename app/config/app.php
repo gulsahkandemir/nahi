@@ -1,4 +1,5 @@
 <?php
+use Illuminate\Support\Facades\URL;
 
 return array(
 
@@ -13,7 +14,7 @@ return array(
 	|
 	*/
 
-	'debug' => true,
+	'debug' => false,
 
 	/*
 	|--------------------------------------------------------------------------
@@ -26,7 +27,7 @@ return array(
 	|
 	*/
 
-	'url' => 'http://needahand.lc',
+	'url' => URL::to(''),
 
 	/*
 	|--------------------------------------------------------------------------

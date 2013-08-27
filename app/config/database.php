@@ -53,14 +53,14 @@ return array(
 		),
 
 		'mysql' => array(
-			'driver'    => 'mysql',
-			'host'      => '127.0.0.1',
-			'database'  => 'nahi',
-			'username'  => 'www',
-			'password'  => '123123',
-			'charset'   => 'utf8',
-			'collation' => 'utf8_unicode_ci',
-			'prefix'    => ''
+            'driver'    => 'mysql',
+            'host'      => '127.0.0.1',
+            'database'  => Request::server('NH_MYSQL_DATABASE'),
+            'username'  => Request::server('NH_MYSQL_USERNAME'),
+            'password'  => Request::server('NH_MYSQL_PASSWORD'),
+            'charset'   => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix'    => ''
 		),
 
 		'pgsql' => array(
