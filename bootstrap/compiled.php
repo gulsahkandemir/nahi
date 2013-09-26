@@ -302,7 +302,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpFoundation\RedirectResponse as SymfonyRedirect;
 class Application extends Container implements HttpKernelInterface, ResponsePreparerInterface
 {
-    const VERSION = '4.0.6';
+    const VERSION = '4.0.7';
     protected $booted = false;
     protected $bootingCallbacks = array();
     protected $bootedCallbacks = array();
@@ -348,7 +348,7 @@ class Application extends Container implements HttpKernelInterface, ResponsePrep
     }
     public static function getBootstrapFile()
     {
-        return '/Users/cansin/nahi/src/vendor/laravel/framework/src/Illuminate/Foundation' . '/start.php';
+        return '/Users/gulsah/nahi/vendor/laravel/framework/src/Illuminate/Foundation' . '/start.php';
     }
     public function startExceptionHandling()
     {
@@ -949,11 +949,19 @@ class Request
                 $query = $parameters;
                 break;
         }
+        $queryString = '';
         if (isset($components['query'])) {
             parse_str(html_entity_decode($components['query']), $qs);
-            $query = array_replace($qs, $query);
+            if ($query) {
+                $query = array_replace($qs, $query);
+                $queryString = http_build_query($query, '', '&');
+            } else {
+                $query = $qs;
+                $queryString = $components['query'];
+            }
+        } elseif ($query) {
+            $queryString = http_build_query($query, '', '&');
         }
-        $queryString = http_build_query($query, '', '&');
         $server['REQUEST_URI'] = $components['path'] . ('' !== $queryString ? '?' . $queryString : '');
         $server['QUERY_STRING'] = $queryString;
         return new static($query, $request, array(), $cookies, $files, $server, $content);
@@ -989,8 +997,11 @@ class Request
         $dup->basePath = null;
         $dup->method = null;
         $dup->format = null;
-        if (!$dup->get('_format')) {
-            $dup->setRequestFormat($this->getRequestFormat());
+        if (!$dup->get('_format') && $this->get('_format')) {
+            $dup->attributes->set('_format', $this->get('_format'));
+        }
+        if (!$dup->getRequestFormat(null)) {
+            $dup->setRequestFormat($format = $this->getRequestFormat(null));
         }
         return $dup;
     }
@@ -1175,6 +1186,12 @@ class Request
             if (self::$trustedHeaders[self::HEADER_CLIENT_PROTO] && 'https' === $this->headers->get(self::$trustedHeaders[self::HEADER_CLIENT_PROTO], 'http')) {
                 return 443;
             }
+        }
+        if ($host = $this->headers->get('HOST')) {
+            if (false !== ($pos = strrpos($host, ':'))) {
+                return intval(substr($host, $pos + 1));
+            }
+            return 'https' === $this->getScheme() ? 443 : 80;
         }
         return $this->server->get('SERVER_PORT');
     }
@@ -1509,14 +1526,14 @@ class Request
             return rtrim($prefix, '/');
         }
         $truncatedRequestUri = $requestUri;
-        if (($pos = strpos($requestUri, '?')) !== false) {
+        if (false !== ($pos = strpos($requestUri, '?'))) {
             $truncatedRequestUri = substr($requestUri, 0, $pos);
         }
         $basename = basename($baseUrl);
         if (empty($basename) || !strpos(rawurldecode($truncatedRequestUri), $basename)) {
             return '';
         }
-        if (strlen($requestUri) >= strlen($baseUrl) && (false !== ($pos = strpos($requestUri, $baseUrl)) && $pos !== 0)) {
+        if (strlen($requestUri) >= strlen($baseUrl) && false !== ($pos = strpos($requestUri, $baseUrl)) && $pos !== 0) {
             $baseUrl = substr($requestUri, 0, $pos + strlen($baseUrl));
         }
         return rtrim($baseUrl, '/');
@@ -1787,15 +1804,22 @@ class ServerBag extends ParameterBag
             } elseif (isset($this->parameters['REDIRECT_HTTP_AUTHORIZATION'])) {
                 $authorizationHeader = $this->parameters['REDIRECT_HTTP_AUTHORIZATION'];
             }
-            if (null !== $authorizationHeader && 0 === stripos($authorizationHeader, 'basic')) {
-                $exploded = explode(':', base64_decode(substr($authorizationHeader, 6)));
-                if (count($exploded) == 2) {
-                    list($headers['PHP_AUTH_USER'], $headers['PHP_AUTH_PW']) = $exploded;
+            if (null !== $authorizationHeader) {
+                if (0 === stripos($authorizationHeader, 'basic')) {
+                    $exploded = explode(':', base64_decode(substr($authorizationHeader, 6)));
+                    if (count($exploded) == 2) {
+                        list($headers['PHP_AUTH_USER'], $headers['PHP_AUTH_PW']) = $exploded;
+                    }
+                } elseif (empty($this->parameters['PHP_AUTH_DIGEST']) && 0 === stripos($authorizationHeader, 'digest')) {
+                    $headers['PHP_AUTH_DIGEST'] = $authorizationHeader;
+                    $this->parameters['PHP_AUTH_DIGEST'] = $authorizationHeader;
                 }
             }
         }
         if (isset($headers['PHP_AUTH_USER'])) {
             $headers['AUTHORIZATION'] = 'Basic ' . base64_encode($headers['PHP_AUTH_USER'] . ':' . $headers['PHP_AUTH_PW']);
+        } elseif (isset($headers['PHP_AUTH_DIGEST'])) {
+            $headers['AUTHORIZATION'] = $headers['PHP_AUTH_DIGEST'];
         }
         return $headers;
     }
@@ -2225,6 +2249,7 @@ class NativeSessionStorage implements SessionStorageInterface
             } else {
                 session_start();
             }
+            $this->loadSession();
         }
         return $ret;
     }
@@ -3257,8 +3282,7 @@ class ExceptionServiceProvider extends ServiceProvider
     }
     protected function getResourcePath()
     {
-        $base = $this->app['path.base'];
-        return $base . '/vendor/laravel/framework/src/Illuminate/Exception/resources';
+        return '/Users/gulsah/nahi/vendor/laravel/framework/src/Illuminate/Exception' . '/resources';
     }
 }
 namespace Illuminate\Routing;
@@ -3600,7 +3624,7 @@ class ErrorHandler
         }
         if ($this->displayErrors && error_reporting() & $level && $this->level & $level) {
             if (!class_exists('Symfony\\Component\\Debug\\Exception\\ContextErrorException')) {
-                require '/Users/cansin/nahi/src/vendor/symfony/debug/Symfony/Component/Debug' . '/Exception/ContextErrorException.php';
+                require '/Users/gulsah/nahi/vendor/symfony/debug/Symfony/Component/Debug' . '/Exception/ContextErrorException.php';
             }
             throw new ContextErrorException(sprintf('%s: %s in %s line %d', isset($this->levels[$level]) ? $this->levels[$level] : $level, $message, $file, $line), 0, $level, $file, $line, $context);
         }
@@ -3611,7 +3635,7 @@ class ErrorHandler
         if (null === ($error = error_get_last())) {
             return;
         }
-        unset($this->reservedMemory);
+        $this->reservedMemory = '';
         $type = $error['type'];
         if (0 === $this->level || !in_array($type, array(E_ERROR, E_CORE_ERROR, E_COMPILE_ERROR, E_PARSE))) {
             return;
@@ -4217,10 +4241,6 @@ class ProviderRepository
         $path = $this->manifestPath . '/services.json';
         $this->files->put($path, json_encode($manifest));
         return $manifest;
-    }
-    protected function getManifestPath($app)
-    {
-        return $this->manifestPath;
     }
     protected function freshManifest(array $providers)
     {
@@ -5381,6 +5401,7 @@ abstract class Model implements ArrayAccess, ArrayableInterface, JsonableInterfa
     protected $appends = array();
     protected $fillable = array();
     protected $guarded = array('*');
+    protected $dates = array();
     protected $touches = array();
     protected $with = array();
     public $exists = false;
@@ -5853,7 +5874,7 @@ abstract class Model implements ArrayAccess, ArrayableInterface, JsonableInterfa
     }
     public function freshTimestamp()
     {
-        return new DateTime();
+        return new Carbon();
     }
     public function freshTimestampString()
     {
@@ -6153,7 +6174,8 @@ abstract class Model implements ArrayAccess, ArrayableInterface, JsonableInterfa
     }
     public function getDates()
     {
-        return array(static::CREATED_AT, static::UPDATED_AT, static::DELETED_AT);
+        $defaults = array(static::CREATED_AT, static::UPDATED_AT, static::DELETED_AT);
+        return array_merge($this->dates, $defaults);
     }
     public function fromDateTime($value)
     {
@@ -6590,7 +6612,7 @@ class Store extends SymfonySession
     }
     protected function mergeNewFlashes(array $keys)
     {
-        $values = array_unique(array_merge($this->get('flash.new'), $keys));
+        $values = array_unique(array_merge($this->get('flash.new', array()), $keys));
         $this->put('flash.new', $values);
     }
     protected function removeFromOldFlashData(array $keys)
@@ -6866,7 +6888,7 @@ class Encrypter
     }
     protected function validMac(array $payload)
     {
-        return $payload['mac'] == $this->hash($payload['iv'], $payload['value']);
+        return $payload['mac'] === $this->hash($payload['iv'], $payload['value']);
     }
     protected function hash($iv, $value)
     {
@@ -7050,6 +7072,7 @@ class Logger implements LoggerInterface
     const CRITICAL = 500;
     const ALERT = 550;
     const EMERGENCY = 600;
+    const API = 1;
     protected static $levels = array(100 => 'DEBUG', 200 => 'INFO', 250 => 'NOTICE', 300 => 'WARNING', 400 => 'ERROR', 500 => 'CRITICAL', 550 => 'ALERT', 600 => 'EMERGENCY');
     protected static $timezone;
     protected $name;
@@ -7248,7 +7271,7 @@ use Monolog\Formatter\LineFormatter;
 abstract class AbstractHandler implements HandlerInterface
 {
     protected $level = Logger::DEBUG;
-    protected $bubble = false;
+    protected $bubble = true;
     protected $formatter;
     protected $processors = array();
     public function __construct($level = Logger::DEBUG, $bubble = true)
@@ -7276,6 +7299,7 @@ abstract class AbstractHandler implements HandlerInterface
             throw new \InvalidArgumentException('Processors must be valid callables (callback or object with an __invoke method), ' . var_export($callback, true) . ' given');
         }
         array_unshift($this->processors, $callback);
+        return $this;
     }
     public function popProcessor()
     {
@@ -7287,6 +7311,7 @@ abstract class AbstractHandler implements HandlerInterface
     public function setFormatter(FormatterInterface $formatter)
     {
         $this->formatter = $formatter;
+        return $this;
     }
     public function getFormatter()
     {
@@ -7298,6 +7323,7 @@ abstract class AbstractHandler implements HandlerInterface
     public function setLevel($level)
     {
         $this->level = $level;
+        return $this;
     }
     public function getLevel()
     {
@@ -7306,6 +7332,7 @@ abstract class AbstractHandler implements HandlerInterface
     public function setBubble($bubble)
     {
         $this->bubble = $bubble;
+        return $this;
     }
     public function getBubble()
     {
@@ -7438,18 +7465,16 @@ class RotatingFileHandler extends StreamHandler
         if (!empty($fileInfo['extension'])) {
             $glob .= '.' . $fileInfo['extension'];
         }
-        $iterator = new \GlobIterator($glob);
-        $count = $iterator->count();
-        if ($this->maxFiles >= $count) {
+        $logFiles = glob($glob);
+        if ($this->maxFiles >= count($logFiles)) {
             return;
         }
-        $array = iterator_to_array($iterator);
-        usort($array, function ($a, $b) {
-            return strcmp($b->getFilename(), $a->getFilename());
+        usort($logFiles, function ($a, $b) {
+            return strcmp($b, $a);
         });
-        foreach (array_slice($array, $this->maxFiles) as $file) {
-            if ($file->isWritable()) {
-                unlink($file->getRealPath());
+        foreach (array_slice($logFiles, $this->maxFiles) as $file) {
+            if (is_writable($file)) {
+                unlink($file);
             }
         }
     }
@@ -10118,7 +10143,7 @@ class PrettyPageHandler extends Handler
             return Handler::DONE;
         }
         if (!($resources = $this->getResourcesPath())) {
-            $resources = '/Users/cansin/nahi/src/vendor/filp/whoops/src/Whoops/Handler' . '/../Resources';
+            $resources = '/Users/gulsah/nahi/vendor/filp/whoops/src/Whoops/Handler' . '/../Resources';
         }
         $templateFile = "{$resources}/pretty-template.php";
         $cssFile = "{$resources}/pretty-page.css";

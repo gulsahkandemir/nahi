@@ -1,5 +1,5 @@
 <div class="row text-center">
-    <div class="nh-letmeknow span8 offset2" data-osman="hebele" data-autosuggest-url="http://www.udemy.com">
+    <div class="nh-letmeknow span8 offset2">
         <h3>
             <a class="bs-popover"
                href="javascript:void(0)"

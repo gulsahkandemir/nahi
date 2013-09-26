@@ -10,7 +10,8 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-Route::resource('/', 'HomeController');
+Route::controller('auth', 'AuthController');
+Route::controller('/', 'HomeController');
 
 // Route group for API versioning
 Route::group(array('prefix' => 'api/v1'), function()

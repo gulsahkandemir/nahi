@@ -35,23 +35,9 @@
         </script>
         <script data-main="/scripts/main.js" src="/vendor/requirejs/require.js"></script>
     </head>
-
     <body class="{{$route}}">
-
-        <div class="navbar navbar-inverse">
-            <div class="navbar-inner">
-                <a class="brand" href="javascript:void(0)">Need a Hand</a>
-                <ul class="nav pull-right">
-                    <li><a href="javascript:void(0)">Sign up</a></li>
-                    <li><a href="javascript:void(0)">Login</a></li>
-                </ul>
-            </div>
-        </div>
-
         <div class="container">
             {{$body}}
         </div>
-
     </body>
-
 </html>
