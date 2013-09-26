@@ -42,8 +42,8 @@
             <div class="navbar-inner">
                 <a class="brand" href="javascript:void(0)">Need a Hand</a>
                 <ul class="nav pull-right">
-                    <li><a href="javascript:void(0)">Sign up</a></li>
-                    <li><a href="javascript:void(0)">Login</a></li>
+                    <li><a href="{{URL::action('AuthController@getSignup')}}">Sign up</a></li>
+                    <li><a href="{{URL::action('AuthController@getLogin')}}">Login</a></li>
                 </ul>
             </div>
         </div>
