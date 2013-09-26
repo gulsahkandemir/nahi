@@ -348,7 +348,7 @@ class Application extends Container implements HttpKernelInterface, ResponsePrep
     }
     public static function getBootstrapFile()
     {
-        return '/Users/gulsah/nahi/vendor/laravel/framework/src/Illuminate/Foundation' . '/start.php';
+        return '/Users/cansin/nahi/src/vendor/laravel/framework/src/Illuminate/Foundation' . '/start.php';
     }
     public function startExceptionHandling()
     {
@@ -3282,7 +3282,7 @@ class ExceptionServiceProvider extends ServiceProvider
     }
     protected function getResourcePath()
     {
-        return '/Users/gulsah/nahi/vendor/laravel/framework/src/Illuminate/Exception' . '/resources';
+        return '/Users/cansin/nahi/src/vendor/laravel/framework/src/Illuminate/Exception' . '/resources';
     }
 }
 namespace Illuminate\Routing;
@@ -3624,7 +3624,7 @@ class ErrorHandler
         }
         if ($this->displayErrors && error_reporting() & $level && $this->level & $level) {
             if (!class_exists('Symfony\\Component\\Debug\\Exception\\ContextErrorException')) {
-                require '/Users/gulsah/nahi/vendor/symfony/debug/Symfony/Component/Debug' . '/Exception/ContextErrorException.php';
+                require '/Users/cansin/nahi/src/vendor/symfony/debug/Symfony/Component/Debug' . '/Exception/ContextErrorException.php';
             }
             throw new ContextErrorException(sprintf('%s: %s in %s line %d', isset($this->levels[$level]) ? $this->levels[$level] : $level, $message, $file, $line), 0, $level, $file, $line, $context);
         }
@@ -10143,7 +10143,7 @@ class PrettyPageHandler extends Handler
             return Handler::DONE;
         }
         if (!($resources = $this->getResourcesPath())) {
-            $resources = '/Users/gulsah/nahi/vendor/filp/whoops/src/Whoops/Handler' . '/../Resources';
+            $resources = '/Users/cansin/nahi/src/vendor/filp/whoops/src/Whoops/Handler' . '/../Resources';
         }
         $templateFile = "{$resources}/pretty-template.php";
         $cssFile = "{$resources}/pretty-page.css";
